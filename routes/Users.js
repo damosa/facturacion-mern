@@ -24,8 +24,6 @@ users.post('/register', (req, res) => {
     })
         .then(user => {
             if (!user) {
-                bcrypt.hash(req.body.password, 10, (err, hash) => {
-                    userData.password = hash
                     User.create(userData)
                         .then(user => {
                             res.json({ status: user.email + 'Registered!' })
@@ -33,7 +31,6 @@ users.post('/register', (req, res) => {
                         .catch(err => {
                             res.send('error: ' + err)
                         })
-                })
             } else {
                 res.json({ error: 'User already exists' })
             }
@@ -49,7 +46,7 @@ users.post('/login', (req, res) => {
     })
         .then(user => {
             if (user) {
-                if (bcrypt.compareSync(req.body.password, user.password)) {
+                if (req.body.password == user.password) {
                     // Passwords match
                     const payload = {
                         _id: user._id,
@@ -101,9 +98,9 @@ users.delete('/delete/:id', async(req, res) => {
 })
 
 users.put('/actualizar/:id',async(req, res) =>{
-    const {first_name, last_name, email} = req.body;
+    const {first_name, last_name, email, password} = req.body;
     const {id}= req.params;
-    await User.findByIdAndUpdate({_id: id}, {first_name, last_name, email});
+    await User.findByIdAndUpdate({_id: id}, {first_name, last_name, email, password});
     res.json("Usuario actualizado")
 })
 

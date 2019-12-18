@@ -48,11 +48,11 @@ class Register extends Component {
             }
     
             register(newUser).then(res => {
-                this.props.history.push(`/login`)
+                this.props.history.push(`/profile`)
             })
         }else{
             Editar(this.state).then( res =>{
-            
+                
             }).catch( err => {
                 alert(err);
             });
@@ -122,7 +122,7 @@ class Register extends Component {
                                 type="submit"
                                 className="btn btn-lg btn-primary btn-block"
                             >
-                                Register!
+                               Enviar
               </button>
                         </form>
                     </div>
