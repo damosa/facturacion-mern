@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { register, oneUser } from './UserFunctions'
+import { register, oneUser, Editar } from './UserFunctions'
 
 
 class Register extends Component {
@@ -7,11 +7,11 @@ class Register extends Component {
     constructor() {
         super()
         this.state = {
+            id: '',
             first_name: '',
             last_name: '',
             email: '',
             password: '',
-            errors: {}
         }
 
         this.onChange = this.onChange.bind(this)
@@ -20,9 +20,9 @@ class Register extends Component {
 
     getOneuser(){
         const { id } = this.props.match.params
-        console.log(id)
         oneUser(id).then( res => {
             this.setState({
+                id: id,
                 first_name: res.first_name,
                 last_name: res.last_name,
                 email: res.email,
@@ -51,9 +51,13 @@ class Register extends Component {
                 this.props.history.push(`/login`)
             })
         }else{
+            Editar(this.state).then( res =>{
+            
+            }).catch( err => {
+                alert(err);
+            });
             this.props.history.push(`/profile`)
-            console.log(this.state)
-            console.log('Editado');
+            
         }
         
         

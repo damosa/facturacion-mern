@@ -73,3 +73,17 @@ export const oneUser = async (user) => {
         alert(err);
     }
 }
+
+export const Editar = (user) => {
+    return axios
+    .put(`http://localhost:5000/users/actualizar/${user.id}`,{
+            first_name: user.first_name,
+            last_name: user.last_name,
+            email: user.email,
+            password: user.password
+    }).then( res => {
+        return res.data
+    }).catch( err => {
+        alert(err)
+    });
+}
