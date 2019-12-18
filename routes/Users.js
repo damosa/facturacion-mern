@@ -107,4 +107,12 @@ users.put('/actualizar/:id',async(req, res) =>{
     res.json("Usuario actualizado")
 })
 
+users.get('/oneUser/:id', async (req, res) => {
+    const { id } = req.params;
+    User.findById(id).then( user => {
+        res.json(user);
+    })
+    
+});
+
 module.exports = users

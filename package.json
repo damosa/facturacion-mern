@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-mysql-authentication",
+  "name": "facturacion-node.js-express-mongodb",
   "version": "1.0.0",
-  "description": "nodejs login with jwt token",
+  "description": "facturacion with nodejs-express-mongodb with jwt token",
   "main": "server.js",
   "scripts": {
     "test": "node server.js",
@@ -13,8 +13,14 @@
     "passport",
     "express"
   ],
-  "author": "Arjun Araneta",
-  "license": "ISC",
+  "comment": {
+    "author": "Arjun Araneta",
+    "license": "ISC",
+    "name": "nodejs-mysql-authentication",
+    "description": "nodejs login with jwt token"
+  },
+  "author": "Alfonso Ballesteros and Daniela Sanmmiguel",
+  "license": "MIT",
   "dependencies": {
     "bcrypt": "^3.0.0",
     "body-parser": "^1.17.2",

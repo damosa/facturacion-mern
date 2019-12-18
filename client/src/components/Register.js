@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { register } from './UserFunctions'
+import { register, oneUser } from './UserFunctions'
+
 
 class Register extends Component {
+    
     constructor() {
         super()
         this.state = {
@@ -16,22 +18,49 @@ class Register extends Component {
         this.onSubmit = this.onSubmit.bind(this)
     }
 
+    getOneuser(){
+        const { id } = this.props.match.params
+        console.log(id)
+        oneUser(id).then( res => {
+            this.setState({
+                first_name: res.first_name,
+                last_name: res.last_name,
+                email: res.email,
+                password: res.password
+            })
+        }).catch( err => {
+
+        });
+    }
+
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
     onSubmit(e) {
-        e.preventDefault()
-
-        const newUser = {
-            first_name: this.state.first_name,
-            last_name: this.state.last_name,
-            email: this.state.email,
-            password: this.state.password
+        const { id } = this.props.match.params
+        if(id === undefined){
+            e.preventDefault()
+            const newUser = {
+                first_name: this.state.first_name,
+                last_name: this.state.last_name,
+                email: this.state.email,
+                password: this.state.password
+            }
+    
+            register(newUser).then(res => {
+                this.props.history.push(`/login`)
+            })
+        }else{
+            this.props.history.push(`/profile`)
+            console.log(this.state)
+            console.log('Editado');
         }
-
-        register(newUser).then(res => {
-            this.props.history.push(`/login`)
-        })
+        
+        
+    }
+    
+    componentDidMount(){
+        this.getOneuser();
     }
 
     render() {

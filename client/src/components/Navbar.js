@@ -2,12 +2,18 @@
 
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
+//import { logout } from './UserFunctions'
 
 class Landing extends Component {
     logOut(e) {
         e.preventDefault()
         localStorage.removeItem('usertoken')
         this.props.history.push(`/`)
+        /*logout().then( res => {
+            this.props.history.push(`/`)
+        }).catch( err => {
+            alert(err)
+        });*/
     }
 
     render() {
@@ -66,6 +72,7 @@ class Landing extends Component {
               </Link>
                         </li>
                     </ul>
+                    {/*Control de sesion*/}
                     {localStorage.usertoken ? userLink : loginRegLink}
                 </div>
             </nav>

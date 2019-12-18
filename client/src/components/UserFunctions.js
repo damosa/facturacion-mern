@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export const register = newUser => {
     return axios
-        .post('users/register', {
+        .post('http://localhost:5000/users/register', {
             first_name: newUser.first_name,
             last_name: newUser.last_name,
             email: newUser.email,
@@ -44,7 +44,7 @@ export const getProfile = user => {
 }
 export const Eliminar= (user)=>{
     return axios
-    .delete('http://localhost:5000/users/delete/'+ user)
+    .delete('users/delete/'+ user)
     .then(response =>{
         console.log(response)
     })
@@ -52,4 +52,24 @@ export const Eliminar= (user)=>{
             console.log(err)
         })
         
+}
+
+export const getToken = () => {
+    // Retrieves the user token from localStorage
+    return localStorage.getItem("usertoken");
+  };
+/*
+export const logout = () => {
+    // Clear user token and profile data from localStorage
+    localStorage.removeItem("usertoken");
+  };*/
+
+export const oneUser = async (user) => {
+    try {
+        const res = await axios.get(`http://localhost:5000/users/oneUser/${user}`);
+            return res.data;
+    }
+    catch (err) {
+        alert(err);
+    }
 }

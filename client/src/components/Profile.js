@@ -28,6 +28,11 @@ class Profile extends Component {
             email: decoded.email*/
         })
     }
+
+    edit(id){
+       this.props.history.push(`/register/${id}`)
+    }
+
     deleteUser(id){
         Eliminar(id).then(res => {
             console.log(res);
@@ -52,11 +57,11 @@ class Profile extends Component {
                         </thead>
                         <tbody>
                             {this.state.users.map(user => (
-                                <tr>      
+                                <tr key={user._id}>      
                                 <td> {user.first_name}</td>
                                 <td>  {user.last_name} </td>
                                 <td> {user.email} </td>
-                                <td><button className="btn btn-warning">Editar</button></td>
+                                <td><button className="btn btn-warning" onClick={() => this.edit(user._id)}>Editar</button></td>
                                     <td><button onClick={() => this.deleteUser(user._id)}className="btn btn-danger">Eliminar</button></td>
                                  </tr>   
                             ))
