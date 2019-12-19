@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { register, oneUser, Editar } from './UserFunctions'
+import { Link } from 'react-router-dom'
 
 
 class Register extends Component {
@@ -69,66 +70,78 @@ class Register extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6 mt-5 mx-auto">
+            <div class="m-content mt-5">
+                <div class="m-portlet m-portlet--mobile">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Datos del Cliente
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="m-portlet__head-tools">
+                            <ul class="m-portlet__nav">
+                                <li class="m-portlet__nav-item">
+                                    <Link to="/profile" class="btn m-btn--pill m-btn--air   btn-outline-success btn-sm m-btn m-btn--custom"
+                                        style={{paddingbottom: "11px", paddingtop: "11px"}}> 
+                                        <span>
+                                            <i class="flaticon-reply"></i>
+                                            <span>Regresar</span>
+                                        </span>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="m-portlet__body">
+                <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="container-fluid">
                         <form noValidate onSubmit={this.onSubmit}>
                             <h1 className="h3 mb-3 font-weight-normal">Registrar</h1>
-                            <div className="form-group">
-                                <label htmlFor="name">Nombre</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    name="first_name"
-                                    placeholder="Enter your first name"
-                                    value={this.state.first_name}
-                                    onChange={this.onChange}
-                                />
+                            <div className=" form-row">
+                                                                  
+                                    <div className="col-md-6 mb-3">
+                                        <label for="validationDefault01" htmlFor="name"><strong>Nombre</strong></label>
+                                        <input  type="text" className="form-control" id="validationDefault01" name="first_name" placeholder="Ingrese Nombre" 
+                                        value={this.state.first_name} onChange={this.onChange} required></input>
+                                    </div>
+                                
+                                
+                                    <div className="col-md-6 mb-3">
+                                        <label for="validationDefault01" htmlFor="name"><strong>Apellido</strong></label>
+                                        <input  type="text" className="form-control" id="validationDefault01" name="last_name" placeholder="Ingrese Apellido"
+                                            value={this.state.last_name} onChange={this.onChange} required></input>
+                                    </div>
+                                
+                            </div>    
+                            <div className=" form-row">
+                                
+                                    <div className="col-md-6 mb-3">
+                                        <label for="validationDefault01" htmlFor="email"><strong>Email</strong></label>
+                                        <input type="text" className="form-control" id="validationDefault01" name="email" placeholder="Ingrese Email"
+                                            value={this.state.email} onChange={this.onChange} required></input>
+                                    </div>
+                                
+                                
+                                    <div className="col-md-6 mb-3">
+                                        <label for="validationDefault01" htmlFor="password"><strong>Contraseña</strong></label>
+                                        <input type="password" className="form-control" id="validationDefault01" name="password" placeholder="Ingrese Contraseña"
+                                            value={this.state.password} onChange={this.onChange} required></input>
+                                    </div>
+                                
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="name">Apellido</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    name="last_name"
-                                    placeholder="Enter your lastname name"
-                                    value={this.state.last_name}
-                                    onChange={this.onChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="email">Email</label>
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    name="email"
-                                    placeholder="Enter email"
-                                    value={this.state.email}
-                                    onChange={this.onChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="password">Contraseña</label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    name="password"
-                                    placeholder="Password"
-                                    value={this.state.password}
-                                    onChange={this.onChange}
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className="btn btn-lg btn-primary btn-block"
-                            >
-                               Enviar
-              </button>
-                        </form>
+                                <button
+                                    type="submit"
+                                    className="btn btn-lg btn-primary btn-block"
+                                > Enviar </button>
+                        </form> 
                     </div>
-                </div>
+                  </div>
+              </div>
             </div>
-        )
+          </div>
+         )
     }
 }
 

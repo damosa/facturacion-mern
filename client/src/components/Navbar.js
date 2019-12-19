@@ -69,7 +69,7 @@ class Landing extends Component {
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
                                 Inicio
-              </Link>
+                            </Link>
                         </li>
                     </ul>
                     {/*Control de sesion*/}

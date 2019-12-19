@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
+import logo from '../control.png'
 
 class Landing extends Component {
     render() {
         return (
-            <div className="container">
-                <div className="jumbotron mt-5">
-                    <div className="col-sm-8 mx-auto">
-                        <h1 className="text-center">BIENVENIDO</h1>
-                    </div>
-                </div>
-            </div>
+            <img style={{ width:'100%'}} src={logo} alt="img"></img>
+               
         )
     }
 }
